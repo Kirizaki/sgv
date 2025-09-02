@@ -2,6 +2,9 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include <vtkSmartPointer.h>
+class vtkGenericOpenGLRenderWindow;
+class vtkRenderer;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +22,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow_;
+    vtkSmartPointer<vtkRenderer> renderer_;
 };
 #endif // MAINWINDOW_H

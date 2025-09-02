@@ -17,8 +17,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 # TODO: ITK & VTK
 # find_package(ITK REQUIRED)
 # include(${ITK_USE_FILE})
-# find_package(VTK REQUIRED)
-# include (#{VTK_USE_FILE})
+set(VTK_DIR "/Users/greg/repo/vtk/build/lib/cmake/vtk-9.5")
+find_package(VTK REQUIRED)
 
 set(TS_FILES SalivaryGlandsViewer_en_AS.ts)
 
@@ -51,10 +51,9 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(SalivaryGlandsViewer
-    PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-    # ${ITK_LIBRARIES}
-    # ${VTK_LIBRARIES}
+target_link_libraries(SalivaryGlandsViewer PRIVATE
+    Qt6::Widgets
+    ${VTK_LIBRARIES}
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
