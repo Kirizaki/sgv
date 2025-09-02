@@ -14,9 +14,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
-# TODO: ITK & VTK
-# find_package(ITK REQUIRED)
-# include(${ITK_USE_FILE})
+# --- ITK ---
+find_package(ITK REQUIRED COMPONENTS ITKVTK ITKIOGDCM ITKIOImageBase)
+set(VTK_DIR "/Users/greg/repo/ITK/build/lib/cmake/ITK-5.4/Modules")
+
+# --- VTK ---
 set(VTK_DIR "/Users/greg/repo/vtk/build/lib/cmake/vtk-9.5")
 find_package(VTK REQUIRED)
 
@@ -34,6 +36,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(SalivaryGlandsViewer
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+
+
     )
 
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
@@ -53,6 +57,7 @@ endif()
 
 target_link_libraries(SalivaryGlandsViewer PRIVATE
     Qt6::Widgets
+    ${ITK_LIBRARIES}
     ${VTK_LIBRARIES}
 )
 

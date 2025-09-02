@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1082</width>
+    <height>1082</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,11 +17,24 @@
    <widget class="QVTKOpenGLNativeWidget" name="vtkWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>220</y>
-      <width>120</width>
-      <height>80</height>
+      <x>30</x>
+      <y>50</y>
+      <width>1000</width>
+      <height>1000</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>1011</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
   </widget>
@@ -30,10 +43,17 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1082</width>
      <height>37</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_DICOM"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionFirst_Context_Menu">
@@ -44,6 +64,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionOpen_DICOM">
+   <property name="text">
+    <string>Open DICOM</string>
    </property>
   </action>
  </widget>
